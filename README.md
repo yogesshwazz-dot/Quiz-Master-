@@ -40,15 +40,6 @@ Quiz-Master/
 2. Open `index.html` in your web browser.
 3. Start playing the quiz!
 
-## 📸 Screenshot
-
-*Add a screenshot of your project here.*
-
-```
-assets/
-└── screenshot.png
-```
-
 ## 🎯 What I Learned
 
 * DOM Manipulation
