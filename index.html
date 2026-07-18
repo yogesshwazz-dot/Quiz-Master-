@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Master — Arcade Trivia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="marquee" aria-hidden="true">
+  <span>★ QUIZ MASTER ★ STEP RIGHT UP ★ TEST YOUR BRAIN ★ QUIZ MASTER ★ STEP RIGHT UP ★ TEST YOUR BRAIN ★</span>
+</div>
+
+<main class="stage">
+
+  
+  <section class="screen" id="screen-start" data-active="true">
+    <div class="ticket">
+      <div class="ticket-notch left"></div>
+      <div class="ticket-notch right"></div>
+      <p class="eyebrow">Admit One Player</p>
+      <h1 class="logo">QUIZ<span>MASTER</span></h1>
+      <p class="tagline">Pick a category, beat the clock, chase the high score.</p>
+
+      <label class="field">
+        <span>Player name</span>
+        <input type="text" id="playerName" maxlength="14" placeholder="e.g. Ada">
+      </label>
+
+      <div class="field">
+        <span>Choose your category</span>
+        <div class="chip-row" id="categoryRow"></div>
+      </div>
+
+      <div class="field">
+        <span>Choose your difficulty</span>
+        <div class="chip-row" id="difficultyRow">
+          <button class="chip" data-diff="easy">Easy <em>20s</em></button>
+          <button class="chip" data-diff="normal">Normal <em>15s</em></button>
+          <button class="chip" data-diff="hard">Hard <em>10s</em></button>
+        </div>
+      </div>
+
+      <button id="startBtn" class="buzzer buzzer--go" disabled>Press to Start ▶</button>
+
+      <button id="showBoard" class="link-btn">View High Scores</button>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-quiz" data-active="false">
+    <div class="quiz-card">
+
+      <div class="quiz-top">
+        <div class="round-badge">
+          <span class="round-label">Round</span>
+          <span id="roundNum">1</span><span class="round-of">/ <span id="roundTotal">10</span></span>
+        </div>
+
+        <div class="timer-wrap" aria-hidden="true">
+          <svg class="timer-ring" viewBox="0 0 64 64">
+            <circle class="timer-track" cx="32" cy="32" r="28"></circle>
+            <circle class="timer-fill" id="timerFill" cx="32" cy="32" r="28"></circle>
+          </svg>
+          <span class="timer-num" id="timerNum">15</span>
+        </div>
+
+        <div class="streak-badge" id="streakBadge">
+          <span class="flame">🔥</span><span id="streakNum">0</span>
+        </div>
+      </div>
+
+      <div class="progress-dots" id="progressDots"></div>
+
+      <h2 class="question" id="questionText">Loading question…</h2>
+
+      <div class="options" id="optionsWrap"></div>
+
+      <div class="quiz-foot">
+        <p class="score-line">Score: <strong id="liveScore">0</strong></p>
+        <button id="nextBtn" class="buzzer buzzer--next" style="visibility:hidden;">Next Question →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-result" data-active="false">
+    <div class="ticket ticket--result">
+      <div class="ticket-notch left"></div>
+      <div class="ticket-notch right"></div>
+      <p class="eyebrow" id="resultEyebrow">Game Over</p>
+      <h1 class="logo logo--sm">FINAL<span>SCORE</span></h1>
+
+      <div class="stub-row">
+        <div class="stub-cell">
+          <span class="stub-num" id="finalScore">0</span>
+          <span class="stub-label">Correct</span>
+        </div>
+        <div class="stub-cell">
+          <span class="stub-num" id="finalPct">0%</span>
+          <span class="stub-label">Accuracy</span>
+        </div>
+        <div class="stub-cell">
+          <span class="stub-num" id="finalStreak">0</span>
+          <span class="stub-label">Best streak</span>
+        </div>
+      </div>
+
+      <p class="verdict" id="verdictText">Nice run!</p>
+
+      <button id="saveScoreBtn" class="buzzer buzzer--go">Save to Leaderboard</button>
+      <button id="playAgainBtn" class="buzzer buzzer--ghost">Play Again</button>
+      <button id="boardFromResult" class="link-btn">View High Scores</button>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-board" data-active="false">
+    <div class="ticket ticket--board">
+      <div class="ticket-notch left"></div>
+      <div class="ticket-notch right"></div>
+      <p class="eyebrow">Hall of Fame</p>
+      <h1 class="logo logo--sm">HIGH<span>SCORES</span></h1>
+
+      <ol class="board-list" id="boardList">
+       
+      </ol>
+      <p class="board-empty" id="boardEmpty">No scores yet — be the first!</p>
+
+      <button id="backHome" class="buzzer buzzer--ghost">Back to Start</button>
+    </div>
+  </section>
+
+</main>
+
+<button id="soundToggle" class="sound-toggle" title="Toggle sound" aria-label="Toggle sound">🔊</button>
+
+<script src="script.js"></script>
+</body>
+</html>
