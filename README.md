@@ -19,7 +19,7 @@ This project was created to practice JavaScript by building a fun quiz applicati
 * Restart quiz
 * Responsive design
 
-## 🛠️ Built With
+##  Built With
 
 * HTML5
 * CSS3
